@@ -6,4 +6,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MapRepository extends JpaRepository<Map, String> {
+
+    Map findByName(String name);
+
+    void deleteByName(String name);
+
+    boolean existsByName(String name);
+
 }
