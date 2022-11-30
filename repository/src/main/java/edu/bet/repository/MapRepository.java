@@ -4,13 +4,15 @@ import edu.bet.entity.Map;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface MapRepository extends JpaRepository<Map, String> {
 
-    Map findByName(String name);
+    Optional<Map> findByNameAndTeamName(String map, String teamName);
 
-    void deleteByName(String name);
+    void deleteByNameAndTeamName(String map, String teamName);
 
-    boolean existsByName(String name);
+    boolean existsByNameAndTeamName(String map, String teamName);
 
 }

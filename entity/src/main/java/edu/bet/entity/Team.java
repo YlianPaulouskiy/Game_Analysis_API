@@ -29,12 +29,7 @@ public class Team {
     List<Player> players;
 
 
-    @ManyToMany
-    @JoinTable(
-            name = "map_pull",
-            joinColumns = @JoinColumn(name = "team_name"),
-            inverseJoinColumns = @JoinColumn(name = "map_name"),
-            foreignKey = @ForeignKey(name = "fk_team_to_map"))
+    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Map> mapPull;
 
 }

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "maps")
@@ -13,19 +12,17 @@ import java.util.List;
 public class Map {
 
     @Id
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "win_rate", nullable = false)
     private Double winRate;
 
+    @Column(name = "team_name", nullable = false)
+    private String teamName;
+
     //---------------------------------------------------------------------------------
 
-    @ManyToMany
-    @JoinTable(
-            name = "map_pull",
-            joinColumns = @JoinColumn(name = "map_name"),
-            inverseJoinColumns = @JoinColumn(name = "team_name"),
-            foreignKey = @ForeignKey(name = "fk_map_to_team"))
-    private List<Team> teamList;
+    @ManyToOne
+    private Team team;
 }

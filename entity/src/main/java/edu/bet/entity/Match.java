@@ -21,11 +21,11 @@ public class Match {
     @Column(name = "team_2", nullable = false)
     private String teamName2;
 
-    @Column(name = "first_map", nullable = false)
+    @Column(name = "first_map")
     private String firstMap;
-    @Column(name = "second_map", nullable = false)
+    @Column(name = "second_map")
     private String secondMap;
-    @Column(name = "third_map", nullable = false)
+    @Column(name = "third_map")
     private String thirdMap;
 
     @Column(name = "prediction_winner", nullable = false)
