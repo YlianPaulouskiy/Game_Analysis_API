@@ -18,11 +18,11 @@ public class Map {
     @Column(name = "win_rate", nullable = false)
     private Double winRate;
 
-    @Column(name = "team_name", nullable = false)
+    @Column(name = "team", nullable = false)
     private String teamName;
 
     //---------------------------------------------------------------------------------
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Team team;
 }

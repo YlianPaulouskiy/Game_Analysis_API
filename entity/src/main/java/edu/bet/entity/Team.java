@@ -29,7 +29,7 @@ public class Team {
     List<Player> players;
 
 
-    @OneToMany(mappedBy = "team", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "team", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Map> mapPull;
 
 }
