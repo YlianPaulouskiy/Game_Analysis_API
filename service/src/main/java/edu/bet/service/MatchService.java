@@ -4,6 +4,7 @@ import edu.bet.dto.MatchDto;
 import edu.bet.dto.MatchWinDto;
 import edu.bet.entity.Match;
 import edu.bet.mapper.MatchMapper;
+import edu.bet.prediction.Prediction;
 import edu.bet.repository.MatchRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ public class MatchService {
 
     private final MatchRepository matchRepository;
     private final MatchMapper matchMapper;
+    private final Prediction prediction;
 
     public MatchWinDto getMatchById(Long id) {
         return matchMapper.convertToDto(matchRepository.findById(id).orElseThrow(
@@ -44,9 +46,9 @@ public class MatchService {
 
     // FIXME: 29.11.2022 добавить логику предсказания победителя и устанавливать ее в модель.
     public MatchWinDto save(MatchDto match) {
-
-        return null;
-//                matchRepository.save(match);
+        MatchWinDto matchWinDto = matchMapper.convertToDto(matchMapper.convert(match));
+        matchWinDto.setPrediction(prediction.getWinner(matchMapper.convert(match)).getName());
+        return matchMapper.convertToDto(matchRepository.save(matchMapper.convertToModel(matchWinDto)));
     }
 
     public MatchWinDto addWinner(Long matchId, String winner) {
