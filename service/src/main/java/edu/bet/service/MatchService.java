@@ -57,4 +57,12 @@ public class MatchService {
         matchRepository.save(match);
         return matchMapper.convertToDto(match);
     }
+
+    public void remove(Long matchId) {
+        if (matchRepository.existsById(matchId)) {
+            matchRepository.deleteById(matchId);
+        } else  {
+            throw new EntityNotFoundException("Match " + matchId + " not found.");
+        }
+    }
 }

@@ -35,12 +35,14 @@ public class TeamController {
     }
 
     @PutMapping("/add/player")
-    public TeamPlayerDto addPlayer(String teamName, String playerName) {
+    public TeamPlayerDto addPlayer(@NotBlank @RequestParam String teamName,
+                                   @NotBlank @RequestParam String playerName) {
         return teamService.addPlayer(teamName,playerName);
     }
 
     @PutMapping("/add/map")
-    public  TeamPlayerDto addMap(String teamName, String mapName) {
+    public  TeamPlayerDto addMap(@NotBlank @RequestParam String teamName,
+                                 @NotBlank @RequestParam String mapName) {
         return teamService.addMap(teamName, mapName);
     }
 
