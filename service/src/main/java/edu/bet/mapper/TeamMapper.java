@@ -31,10 +31,7 @@ public interface TeamMapper {
     @AfterMapping
     default void linkMapPull(@MappingTarget Team team) {
         if (team.getMapPull() != null) {
-            team.getMapPull()
-                    .stream()
-                    .filter(map -> map.getTeamList() != null)
-                    .forEach(map -> map.getTeamList().add(team));
+            team.getMapPull().forEach(map -> map.setTeam(team));
         }
     }
 

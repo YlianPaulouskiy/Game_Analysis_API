@@ -10,7 +10,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +44,7 @@ public class MapService {
      * @param mapDto
      * @return
      */
-    public MapTeamDto save(@Valid MapDto mapDto) {
+    public MapTeamDto save(MapDto mapDto) {
         if (mapRepository.existsByNameAndTeamName(mapDto.getName(), mapDto.getTeamName())) {
             //получаем карту из БД с ссылкой на команду
             Map map = mapRepository.findByNameAndTeamName(mapDto.getName(), mapDto.getTeamName()).get();

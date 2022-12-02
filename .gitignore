@@ -1,5 +1,5 @@
 src
-service/src/main/java/edu/bet/precision/*
+service/src/main/java/edu/bet/prediction/*
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar

@@ -23,11 +23,8 @@ public interface MapMapper {
 
     @AfterMapping
     default void linkTeams(@MappingTarget Map map) {
-        if (map.getTeamList() != null ) {
-            map.getTeamList()
-                    .stream()
-                    .filter(team -> team.getMapPull()!=null)
-                    .forEach(team -> team.getMapPull().add(map));
+        if (map.getTeam() != null && map.getTeam().getMapPull() != null) {
+            map.getTeam().getMapPull().add(map);
         }
     }
 
