@@ -20,7 +20,7 @@ public class MapController {
     private final MapService mapService;
 
     @GetMapping("/get")
-    public MapTeamDto findOneMap(@NotBlank @RequestParam String mapName,
+    public MapTeamDto findOne(@NotBlank @RequestParam String mapName,
                                  @NotBlank @RequestParam String teamName) {
         return mapService.findByName(mapName,teamName);
     }
